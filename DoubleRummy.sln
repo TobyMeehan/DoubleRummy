@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoubleRummyGame", "DoubleRummyGame\DoubleRummyGame.csproj", "{EE541593-BD62-4FFD-8EC5-7F453FC4196E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoubleRummyEngine", "DoubleRummyEngine\DoubleRummyEngine.csproj", "{47507027-57B6-4A39-8467-F77DE95CF1B1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE541593-BD62-4FFD-8EC5-7F453FC4196E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE541593-BD62-4FFD-8EC5-7F453FC4196E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE541593-BD62-4FFD-8EC5-7F453FC4196E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE541593-BD62-4FFD-8EC5-7F453FC4196E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47507027-57B6-4A39-8467-F77DE95CF1B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47507027-57B6-4A39-8467-F77DE95CF1B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47507027-57B6-4A39-8467-F77DE95CF1B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47507027-57B6-4A39-8467-F77DE95CF1B1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {273AC418-A50F-4C2B-9164-545A2E4B718E}
+	EndGlobalSection
+EndGlobal
