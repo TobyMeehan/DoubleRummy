@@ -8,24 +8,24 @@ namespace DoubleRummy.SignalR
 {
     public class Lobby
     {
-        public Lobby(string displayName, int size)
+        public Lobby(string connectionId, string displayName, int size)
         {
-            Players.Add(displayName, new Player());
+            Players.Add(new Connection(connectionId, displayName));
             Size = size;
         }
 
         public Game Game { get; set; }
-        public Dictionary<string, Player> Players { get; set; }
+        public List<Connection> Players { get; set; } = new List<Connection>();
         public Player Player { get; set; }
         public int Size { get; set; }
 
-        public bool TryJoin(string displayName, out string message)
+        public bool TryJoin(string connectionId, string displayName, out string message)
         {
             if (Players.Count < Size)
             {
-                if (!Players.ContainsKey(displayName))
+                if (!Players.Any(p => p.DisplayName == displayName))
                 {
-                    Players.Add(displayName, new Player());
+                    Players.Add(new Connection(connectionId, displayName));
                     message = "Successfully joined lobby.";
                     return true;
                 }
@@ -40,6 +40,20 @@ namespace DoubleRummy.SignalR
             }
 
             return false;
+        }
+
+        public void InitGame()
+        {
+            Game = new Game(Players.Select(p => p.Player).ToList(), RoundDefaults.DoubleRummy);
+        }
+
+        /// <summary>
+        /// Starts the next turn and returns the next connection to be called
+        /// </summary>
+        /// <returns></returns>
+        public Connection Next()
+        {
+
         }
     }
 }

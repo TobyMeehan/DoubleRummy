@@ -10,8 +10,9 @@ namespace DoubleRummy.SignalR
     {
         Task SuccessLobbyJoin(Lobby lobby);
         Task PlayerJoinedLobby(Player player);
+        Task FinalPlayerJoined();
         Task FailedLobbyJoin(string reason);
-        Task StartGame();
+        Task StartGame(Game game);
         Task TakeTurn();
     }
 }

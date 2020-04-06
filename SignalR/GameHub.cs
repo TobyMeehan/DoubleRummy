@@ -22,11 +22,19 @@ namespace DoubleRummy.SignalR
             {
                 Lobby lobby = _lobbies[key];
 
-                if (lobby.TryJoin(displayName, out string reason))
+                if (lobby.TryJoin(Context.ConnectionId, displayName, out string reason))
                 {
                     await Groups.AddToGroupAsync(Context.ConnectionId, key);
                     await Clients.Caller.SuccessLobbyJoin(lobby);
-                    await Clients.GroupExcept(key, Context.ConnectionId).PlayerJoinedLobby(lobby.Players[displayName]);
+                    await Clients.OthersInGroup(key).PlayerJoinedLobby(lobby.Players.Single(p => p.DisplayName == displayName).Player);
+
+                    if (lobby.Players.Count == lobby.Size)
+                    {
+                        await Clients.Group(key).FinalPlayerJoined();
+                        lobby.InitGame();
+                        await Clients.Group(key).StartGame(lobby.Game);
+                        
+                    }
                 }
                 else
                 {
@@ -43,7 +51,7 @@ namespace DoubleRummy.SignalR
         {
             if (!_lobbies.ContainsKey(key))
             {
-                Lobby lobby = new Lobby(displayName, size);
+                Lobby lobby = new Lobby(Context.ConnectionId, displayName, size);
                 _lobbies.Add(key, lobby);
                 return Clients.Caller.SuccessLobbyJoin(lobby);
             }
