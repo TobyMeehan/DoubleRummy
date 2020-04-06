@@ -86,5 +86,7 @@ namespace DoubleRummyEngine
                 return cards.TrueForAll(c => c.Value == cards.First().Value) && cards.Count >= length;
             };
         }
+
+        public const int StartingBalance = 30;
     }
 }
